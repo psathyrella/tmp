@@ -1,14 +1,14 @@
 
 ## partition information
 
-Use a single column in a csv to describe a partition of the entire data set.
+Use a single column in a csv to describe partitions of the data set.
 An entry in this column consists of semicolon-separated clusters.
 Each cluster consists of colon-separated sequence ids.
 Each row in the csv contains a different partition of the entire data set.
 
 For instance there might be a line for the best partition, but also lines for somewhat more inclusive clusters to communicate the clustering uncertainty.
 
-For example, if we have five sequences labeled `a` through `e`, we could represent a single partition as:
+For example, if we have five sequences labeled `a` through `e`, we could represent a single partition (with three clusters) as:
 
 ```
 partitions
@@ -24,6 +24,8 @@ e:d:a:b;c,-210.7
 e:d:a:b:c,-530.1
 ```
 
+Practical [example](https://github.com/psathyrella/partis/blob/master/test/reference-results/partition-ref-simu.csv).
+
 ## annotation information
 
 The partition csv above would be a different file than the [annotation csv](https://github.com/airr-community/airr-formats/blob/master/docs/rearrangements.md) which we've already discussed/decided on.
@@ -36,7 +38,8 @@ Two proposals to handle this simultaneous annotation of multiple sequences:
 
 We can take the [annotation csv](https://github.com/airr-community/airr-formats/blob/master/docs/rearrangements.md) and generalize the columns to handle more than one sequence.
 For instance, the `id` column would allow multiple colon-separated ids, like `a:b` for two sequences with ids `a` and `b`.
-This is how partis implements it.
+
+Practical [example](https://github.com/psathyrella/partis/blob/master/test/reference-results/annotate-ref-simu.csv).
 
 #### option 2: put annotation information in the partition csv
 
